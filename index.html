@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map with KML Layer</title>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARw-oNf2mOE2sG3AFutUbq58X7W9h6r4k&callback=initMap">
+    </script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Google Map with KML Layer</h3>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            // Create a new map
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: { lat: 49.496675, lng: -102.65625 },
+            });
+
+            // Create a new KML layer using the provided URL
+            const georssLayer = new google.maps.KmlLayer({
+                url: "http://api.flickr.com/services/feeds/geo/?g=322338@N20&lang=en-us&format=feed-georss",
+            });
+
+            //KML layer
+            georssLayer.setMap(map);
+        }
+
+      
+        window.initMap = initMap;
+    </script>
+</body>
+
+</html>
